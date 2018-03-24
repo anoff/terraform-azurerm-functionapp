@@ -62,3 +62,8 @@ variable "client_affinity_enabled" {
   description = ""
   default     = true
 }
+
+variable "git_enabled" {
+  description = "Setup git deployment, default = true"
+  default     = true
+}

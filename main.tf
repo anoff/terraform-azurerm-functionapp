@@ -41,6 +41,6 @@ resource "azurerm_function_app" "funcapp" {
 
   # set up git deployment
   provisioner "local-exec" {
-    command = "az functionapp deployment source config-local-git --ids ${azurerm_function_app.funcapp.id}"
+    command = "${var.git_enabled ? "az functionapp deployment source config-local-git --ids ${azurerm_function_app.funcapp.id}" : true}"
   }
 }
