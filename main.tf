@@ -30,10 +30,9 @@ resource "azurerm_function_app" "funcapp" {
   resource_group_name       = "${azurerm_resource_group.funcapp.name}"
   app_service_plan_id       = "${azurerm_app_service_plan.funcapp.id}"
   storage_connection_string = "${azurerm_storage_account.funcapp.primary_connection_string}"
-  client_affinity_enabled   = true
-
-  #  version                   = "${var.version}"
-  app_settings = "${var.app_settings}"
+  client_affinity_enabled   = "${var.client_affinity_enabled}"
+  version                   = "${var.version}"
+  app_settings              = "${var.app_settings}"
 
   site_config {
     always_on = "${lower(var.plan_type) == "consumption" ? false : var.always_on}"
