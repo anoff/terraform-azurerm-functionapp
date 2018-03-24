@@ -1,3 +1,11 @@
+provider "azurerm" {
+  version = ">= 1.3.0"
+}
+
+terraform {
+  required_version = ">= 0.11.0"
+}
+
 resource "azurerm_resource_group" "funcapp" {
   name     = "${var.resource_group_name == "" ? replace(var.name, "/[^a-z0-9]/", "") : var.resource_group_name}"
   location = "${var.location}"
