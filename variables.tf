@@ -2,16 +2,12 @@
 # required values
 # ###
 
-variable "resource_group_name" {
-  description = "The name of the resource group in which the resources will be created"
-}
-
 variable "location" {
   description = "Region where the resources are created."
 }
 
-variable "function_app_name" {
-  description = "The name of the function app that will host the functions"
+variable "name" {
+  description = "The name of the function app"
 }
 
 variable "plan_type" {
@@ -21,6 +17,11 @@ variable "plan_type" {
 # ###
 # optional values
 # ###
+
+variable "resource_group_name" {
+  description = "The name of the resource group in which the resources will be created, default = $function_app_name"
+  default     = ""
+}
 
 variable "plan_settings" {
   type        = "map"
@@ -60,7 +61,7 @@ variable "always_on" {
 
 variable "client_affinity_enabled" {
   description = ""
-  default     = true
+  default     = false
 }
 
 variable "git_enabled" {
