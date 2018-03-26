@@ -58,6 +58,13 @@ module "myfunction" {
 }
 ```
 
+## Changelog
+
+### `v0.1.0`
+
+- Set `accound_kind` to `StorageV2`
+- Enable encryption at rest & `HTTPS` traffic only
+
 ## License
 
 [MIT](./LICENSE) © [Andreas Offenhaeuser](http://anoff.io)
