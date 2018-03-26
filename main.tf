@@ -32,7 +32,7 @@ resource "azurerm_app_service_plan" "funcapp" {
   sku {
     tier     = "${lower(var.plan_type) == "consumption" ? "Dynamic" : "Standard"}"
     size     = "${lower(var.plan_type) == "consumption" ? "Y1" : var.plan_settings["size"]}"
-    capacity = "${lower(var.plan_type) == "consumption" ? 1 : var.plan_settings["capacity"]}"
+    capacity = "${lower(var.plan_type) == "consumption" ? 0 : var.plan_settings["capacity"]}"
   }
 }
 
