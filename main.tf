@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "funcapp" {
   resource_group_name       = "${azurerm_resource_group.funcapp.name}"
   location                  = "${azurerm_resource_group.funcapp.location}"
   account_tier              = "Standard"
-  accound_kind              = "StorageV2"
+  account_kind              = "StorageV2"
   account_replication_type  = "LRS"
   enable_blob_encryption    = true
   enable_file_encryption    = true
