@@ -44,7 +44,7 @@ variable "service_plan_name" {
   default     = ""
 }
 
-variable "version" {
+variable "func_version" {
   description = "The runtime version associated with the Function App. Possible values are ~1 and beta. Defaults to ~1."
   default     = "~1"
 }

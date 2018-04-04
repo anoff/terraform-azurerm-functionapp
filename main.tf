@@ -43,7 +43,7 @@ resource "azurerm_function_app" "funcapp" {
   app_service_plan_id       = "${azurerm_app_service_plan.funcapp.id}"
   storage_connection_string = "${azurerm_storage_account.funcapp.primary_connection_string}"
   client_affinity_enabled   = "${var.client_affinity_enabled}"
-  version                   = "${var.version}"
+  version                   = "${var.func_version}"
   app_settings              = "${var.app_settings}"
 
   site_config {
