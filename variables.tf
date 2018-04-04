@@ -25,7 +25,7 @@ variable "resource_group_name" {
 
 variable "plan_settings" {
   type        = "map"
-  description = "Definition of the dedicated plan to use, default = Linux 1x S1"
+  description = "Definition of the dedicated plan to use"
 
   default = {
     kind     = "Linux" # Linux or Windows
@@ -45,7 +45,7 @@ variable "service_plan_name" {
 }
 
 variable "func_version" {
-  description = "The runtime version associated with the Function App. Possible values are ~1 and beta. Defaults to ~1."
+  description = "The runtime version associated with the Function App. Possible values are ~1 and beta"
   default     = "~1"
 }
 
@@ -55,16 +55,16 @@ variable "app_settings" {
 }
 
 variable "always_on" {
-  description = "Keep the function always_on, default = true"
+  description = "Keep the function always_on"
   default     = true
 }
 
 variable "client_affinity_enabled" {
-  description = ""
+  description = "Enable client affinity a.k.a. sticky sessions"
   default     = false
 }
 
 variable "git_enabled" {
-  description = "Setup git deployment, default = true"
+  description = "Set deployment mode to local git"
   default     = true
 }

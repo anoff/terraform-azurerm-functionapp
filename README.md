@@ -13,6 +13,8 @@
 
 ## Usage
 
+> 🚨 Note: As Terraform and ARM do not natively support enabling local git deployment this module uses the `az` CLI for that. This means you need to have `az` installed and a valid login token when running Terraform. If you set `git_enabled = false` you do not need either.
+
 Deploy a function app in consumption plan with git deployment enabled:
 
 ```
@@ -23,7 +25,12 @@ module "myfunction" {
     plan_type           = "consumption"
 }
 
-Outputs: git_url = myfunction.scm.azurewebsites:net:443/myfunction.git
+Outputs:
+git_url = myfunction.scm.azurewebsites:net:443/myfunction.git
+name    = myfunction
+id      = /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Web/sites/myfunction
+outbound_ip_addresses = 52.23.25.3,52.143.43.12
+default_hostname = myfunction.azurewebsites.net
 ```
 
 Use a dedicated app plan with default settings and disabled git deployment:
@@ -38,7 +45,12 @@ module "myfunction" {
     git_enabled         = false
 }
 
-Outputs: git_url =
+Outputs:
+git_url = 
+name    = myfunction
+id      = /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Web/sites/myfunction
+outbound_ip_addresses = 52.23.25.3,52.143.43.12
+default_hostname = myfunction.azurewebsites.net
 ```
 
 Custom dedicated plan:
@@ -59,6 +71,11 @@ module "myfunction" {
 ```
 
 ## Changelog
+
+### `v0.2.0`
+
+- additional outputs on the module [#2](https://github.com/anoff/terraform-azurerm-functionapp/issues/2)
+- use `func_version` as module parameter to define function version [#3](https://github.com/anoff/terraform-azurerm-functionapp/issues/3)
 
 ### `v0.1.0`
 
