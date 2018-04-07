@@ -22,3 +22,8 @@ output "default_hostname" {
   description = "Unique hostname to reach the Function App"
   value       = "${azurerm_function_app.funcapp.default_hostname}"
 }
+
+output "msi_principal_id" {
+  description = "ID of the Managed Service Identity (if msi_enabled=true)"
+  value       = "${azurerm_template_deployment.activate_msi.outputs["principal_id"]}"
+}

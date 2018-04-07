@@ -68,3 +68,8 @@ variable "git_enabled" {
   description = "Set deployment mode to local git"
   default     = true
 }
+
+variable "msi_enabled" {
+  description = "Activate Managed Service Principal"
+  default     = false
+}

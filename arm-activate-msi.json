@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "app_name": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+    "apiVersion": "2016-08-01",
+    "type": "Microsoft.Web/sites",
+    "name": "[parameters('app_name')]",
+    "properties": {},
+    "location": "[resourceGroup().location]",
+    "identity": {
+      "type": "SystemAssigned"
+    }
+    }
+  ],  
+  "outputs": {
+    "principal_id": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.Web/sites/', parameters('app_name')), '2016-08-01','Full').identity.principalid]"
+    }
+  }
+}

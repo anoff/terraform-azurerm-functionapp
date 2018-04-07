@@ -1,5 +1,5 @@
 provider "azurerm" {
-  version = ">= 1.3.0"
+  version = ">= 1.3.2"
 }
 
 terraform {
@@ -54,4 +54,17 @@ resource "azurerm_function_app" "funcapp" {
   provisioner "local-exec" {
     command = "${var.git_enabled ? join("", list("az functionapp deployment source config-local-git --ids ", azurerm_function_app.funcapp.id)) : "true"}"
   }
+}
+
+# https://docs.microsoft.com/en-us/azure/templates/microsoft.web/sites#ManagedServiceIdentity
+resource "azurerm_template_deployment" "activate_msi" {
+  name                = "activate-msi-${var.name}"
+  resource_group_name = "${azurerm_resource_group.funcapp.name}"
+  deployment_mode     = "Incremental"
+
+  parameters {
+    "app_name" = "${var.name}"
+  }
+
+  template_body = "${file("arm-activate-msi.json")}"
 }
