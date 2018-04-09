@@ -72,6 +72,10 @@ module "myfunction" {
 
 ## Changelog
 
+### `v0.3.0`
+
+- add `connection_string` as input variable, see [terraform docs](https://www.terraform.io/docs/providers/azurerm/r/function_app.html#connection_string) for usage [#4](https://github.com/anoff/terraform-azurerm-functionapp/issues/4)
+
 ### `v0.2.0`
 
 - additional outputs on the module [#2](https://github.com/anoff/terraform-azurerm-functionapp/issues/2)

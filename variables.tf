@@ -54,6 +54,11 @@ variable "app_settings" {
   default     = {}
 }
 
+variable "connection_string" {
+  description = "A block containing connection string definitions, see https://www.terraform.io/docs/providers/azurerm/r/function_app.html#connection_string"
+  default     = []
+}
+
 variable "always_on" {
   description = "Keep the function always_on"
   default     = true
