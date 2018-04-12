@@ -53,7 +53,7 @@ outbound_ip_addresses = 52.23.25.3,52.143.43.12
 default_hostname = myfunction.azurewebsites.net
 ```
 
-Custom dedicated plan:
+Custom dedicated plan with web sockets:
 
 ```
 module "myfunction" {
@@ -67,10 +67,18 @@ module "myfunction" {
         size     = "S3"
         capacity = 4
     }
+    site_config {
+        always_on          = true
+        websockets_enabled = true
+    }
 }
 ```
 
 ## Changelog
+
+### `v0.4.0`
+
+- support `site_config` as variable, use this to set `always_on` property instead of the previous `var.always_on`
 
 ### `v0.3.0`
 

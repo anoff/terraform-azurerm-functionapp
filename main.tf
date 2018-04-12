@@ -46,10 +46,7 @@ resource "azurerm_function_app" "funcapp" {
   version                   = "${var.func_version}"
   app_settings              = "${var.app_settings}"
   connection_string         = "${var.connection_string}"
-
-  site_config {
-    always_on = "${lower(var.plan_type) == "consumption" ? false : var.always_on}"
-  }
+  site_config               = "${local.site_config}"
 
   # set up git deployment
   provisioner "local-exec" {
